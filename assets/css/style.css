@@ -2,8 +2,19 @@
    TREVIX365 — Brand Stylesheet (Light)
    Surfaces: White / Off-white · Text: Navy
    Accents only: Teal #00B8C9 · Green #7AC943
-   Type: Montserrat (display) / Poppins (body)
+   Type: Montserrat (display) / Poppins (body) — self-hosted
    ========================================================= */
+
+/* ---------- Self-hosted fonts (no external CDN) ---------- */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/montserrat-500.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/montserrat-600.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/montserrat-700.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('../fonts/montserrat-800.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;src:url('../fonts/montserrat-900.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url('../fonts/poppins-300.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/poppins-400.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/poppins-500.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/poppins-600.woff2') format('woff2');}
 
 :root {
   --navy:      #071A3D;
@@ -523,7 +534,7 @@ p  { color: var(--muted); }
 .footer-links a { display: block; font-size: .9rem; color: #9fb0cb; margin-bottom: 9px; transition: color .2s; }
 .footer-links a:hover { color: var(--green); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  padding: 22px 0; border-top: 1px solid rgba(255,255,255,.1); font-size: .8rem; color: #8494b0; }
+  padding-top: 22px; padding-bottom: 22px; border-top: 1px solid rgba(255,255,255,.1); font-size: .8rem; color: #8494b0; }
 .footer-tagline { color: #9fb0cb; }
 
 /* =========================================================
@@ -556,12 +567,43 @@ p  { color: var(--muted); }
   .main-nav a::after { display: none !important; }
   .nav-cta { margin-top: 14px; text-align: center; border-bottom: none !important; }
   .nav-toggle { display: flex; }
-  .feature-grid, .why-grid, .plan-grid, .steps { grid-template-columns: 1fr; }
+
+  /* tighter rhythm on mobile */
+  .section { padding: 56px 0; }
+  .section-head.center { margin-bottom: 32px; }
+  .feature-strip { padding: 44px 0; }
+
+  /* 2-up compact grids to cut scrolling */
+  .feature-grid, .why-grid, .steps { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .plan-grid { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
+
+  .feature-item, .why-card { padding: 22px 16px; }
+  .feature-item h3, .why-card h3, .step h3 { font-size: 1rem; }
+  .feature-item p { display: none; }            /* titles are self-explanatory */
+  .why-card p, .step p { font-size: .82rem; }
+  .feature-ic, .why-ic { width: 44px; height: 44px; margin-bottom: 12px; }
+  .feature-ic svg, .why-ic svg { width: 22px; height: 22px; }
+
+  .step { padding: 24px 16px; }
+  .step-ic { width: 50px; height: 50px; margin-bottom: 12px; }
+  .step-ic svg { width: 24px; height: 24px; }
+  .step-num { font-size: .95rem; top: 12px; right: 12px; }
+
+  .how-banner { margin-bottom: 30px; }
+  .how-banner img { height: 190px; }
+  .how-banner-label { font-size: .82rem; left: 16px; bottom: 16px; }
+
+  .plan-card { padding: 28px 22px 26px; }
+  .cta-banner { padding: 40px 22px; }
+  .marquee-track span { font-size: .85rem; }
+
   .stat { padding: 0 12px; }
   .stat-num { font-size: 1.7rem; }
+
   .footer-links { grid-template-columns: 1fr 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 20px; padding-bottom: 30px; }
+
   .tech-float-1 { right: 6px; }
   .tech-float-2 { left: 6px; }
   .hero-badge { left: 10px; }
