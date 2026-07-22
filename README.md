@@ -38,11 +38,12 @@ python3 -m http.server 8080
 - **Plan pricing** is taken from the Trevix365 plan sheet (Ultra Premium Care ₹3,999, Premium Care ₹2,499 / Privacy ₹2,699, Ultra Shield ₹1,999, Essential ₹399 / Privacy ₹599). Prices are indicative and may vary by device.
 - **Product imagery** was AI-generated on-brand as placeholders; swap in real photography of the Trevix365 cutting machine, kiosks and installs when available.
 - The **contact form** is a front-end demo — wire it to your email/CRM (e.g. Formspree, a serverless function, or your backend) to receive enquiries.
-- Update contact details (`hello@trevix365.com`, phone) and social links in `index.html` before going live.
+- **Contact details** are live: `Info@trevix365.com`, `+91 81699 05555` (email, tel and WhatsApp links wired in `index.html`).
+- **Logos**: `assets/img/logo.png` (navy wordmark, used on the light header) and `assets/img/logo-light.png` (white wordmark, used on the dark footer).
 
 ## To do before launch
 
-- [ ] Replace placeholder phone number and social URLs
 - [ ] Connect the enquiry form to a backend
 - [ ] Swap AI placeholder images for real brand photography
 - [ ] Add real kiosk locations / map once open
+- [ ] Confirm social profile URLs (Instagram / Facebook)
