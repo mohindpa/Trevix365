@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trevix365 — Protect. Repair. Replace. | Custom-Cut Device Protection</title>
   <meta name="description" content="Trevix365 delivers custom-cut screen protection for any device, backed by a 1-year display damage warranty and authorised service. Protect. Repair. Replace. Now opening across Kerala." />
-  <meta name="theme-color" content="#071A3D" />
+  <meta name="theme-color" content="#060d1d" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Trevix365 — Protect. Repair. Replace." />
@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <script>(function(){try{var t=localStorage.getItem('tv-theme');document.documentElement.setAttribute('data-theme',t?t:'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 
   <!-- global gradient defs for logo swoosh -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -36,7 +37,8 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="Trevix365 home">
-        <img src="assets/img/logo.png" alt="Trevix365" width="1072" height="300" />
+        <img class="logo-on-light" src="assets/img/logo.png" alt="Trevix365" width="1072" height="300" />
+        <img class="logo-on-dark" src="assets/img/logo-light.png" alt="Trevix365" width="1072" height="300" />
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Primary">
@@ -49,9 +51,15 @@
         <a href="#stores" class="btn btn-primary btn-sm nav-cta">Find a Kiosk</a>
       </nav>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Toggle dark / light theme">
+          <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5V5M12 19v2.5M4.5 12H2M22 12h-2.5M5.4 5.4 3.9 3.9M20.1 20.1l-1.5-1.5M18.6 5.4l1.5-1.5M3.9 20.1l1.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -375,7 +383,7 @@
         <h2 class="reveal">Find Trevix365 <span class="grad">near you.</span></h2>
         <p class="reveal">We're rolling out kiosks inside leading stores and malls across Kerala. Drop by, get your device protected on the spot, and register for warranty cover.</p>
         <div class="city-chips reveal">
-          <span>Kochi</span><span>Thiruvananthapuram</span><span>Kozhikode</span><span>Thrissur</span><span>Kannur</span><span>Kollam</span><span>Kottayam</span><span>Malappuram</span>
+          <span>Kochi</span><span>Thrissur</span>
         </div>
         <div class="stores-cta reveal">
           <a href="#contact" class="btn btn-primary">Locate a kiosk</a>

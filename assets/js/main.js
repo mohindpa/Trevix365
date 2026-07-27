@@ -110,4 +110,22 @@
   /* ---- Footer year ---- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
+
+  /* ---- Theme toggle (light default, dark opt-in, remembered) ---- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeToggle');
+  var metaTheme = document.querySelector('meta[name="theme-color"]');
+  var setMeta = function (theme) {
+    if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#060d1d' : '#071A3D');
+  };
+  setMeta(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('tv-theme', next); } catch (e) {}
+      themeBtn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      setMeta(next);
+    });
+  }
 })();
