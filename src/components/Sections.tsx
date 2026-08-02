@@ -26,6 +26,7 @@ const Check = () => (
   </span>
 )
 import { Button, Card, Eyebrow, IconBox, Reveal, SectionHead } from '@/components/ui/primitives'
+import { Img } from '@/components/ui/Img'
 import { CITIES, CONTACT, FAQS, PLANS, PLAN_ASSURANCES, STEPS, TESTIMONIALS } from '@/lib/content'
 import type { Plan } from '@/lib/content'
 import { cn } from '@/lib/utils'
@@ -69,7 +70,10 @@ const FEATURES = [
 
 export function Features() {
   return (
-    <section className="bg-surface py-14 sm:py-20">
+    <section aria-labelledby="features-heading" className="bg-surface py-14 sm:py-20">
+      <h2 id="features-heading" className="sr-only">
+        What every Trevix365 protection plan includes
+      </h2>
       <div className="container-x grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         {FEATURES.map((f, i: number) => (
           <Reveal key={f.title} delay={i * 0.06}>
@@ -95,11 +99,18 @@ const TECH_POINTS = [
 
 export function Technology() {
   return (
-    <section id="technology" className="bg-surface-alt py-16 sm:py-28">
+    <section id="technology" aria-labelledby="technology-heading" className="bg-surface-alt py-16 sm:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="relative order-2 lg:order-1">
           <div className="relative overflow-hidden rounded-3xl border border-line shadow-brand">
-            <img src="/assets/img/machine.jpg" alt="The Trevix365 precision film-cutting machine" loading="lazy" className="w-full" />
+            <Img
+              src="/assets/img/machine.jpg"
+              alt="The Trevix365 precision film-cutting machine trimming a screen protector to size"
+              title="Trevix365 on-site screen protector cutting machine"
+              width={1376}
+              height={768}
+              className="w-full"
+            />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_84%,rgb(0_184_201/.18),transparent_45%)]" />
           </div>
           <motion.div
@@ -123,7 +134,7 @@ export function Technology() {
         <div className="order-1 lg:order-2">
           <Reveal><Eyebrow>The Technology</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
+            <h2 id="technology-heading" className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
               One machine. <span className="grad-text">Every device.</span>
             </h2>
           </Reveal>
@@ -161,9 +172,10 @@ const STEP_ICONS = [Target, Ruler, Sparkles, ShieldCheck]
 
 export function HowItWorks() {
   return (
-    <section id="how" className="bg-surface py-16 sm:py-28">
+    <section id="how" aria-labelledby="how-heading" className="bg-surface py-16 sm:py-28">
       <div className="container-x">
         <SectionHead
+          id="how-heading"
           eyebrow="How It Works"
           title="Protected in four simple steps"
           sub="Walk up to a Trevix365 kiosk and walk away protected — usually in under ten minutes."
@@ -171,7 +183,14 @@ export function HowItWorks() {
 
         <Reveal className="mx-auto mt-10 max-w-4xl">
           <div className="relative overflow-hidden rounded-3xl border border-line shadow-brand">
-            <img src="/assets/img/application.jpg" alt="A technician applying a screen protector bubble-free" loading="lazy" className="h-[200px] w-full object-cover sm:h-[340px]" />
+            <Img
+              src="/assets/img/application.jpg"
+              alt="A trained technician applying a Trevix365 screen protector bubble-free to a smartphone"
+              title="Bubble-free screen protector installation"
+              width={1872}
+              height={1248}
+              className="h-[200px] w-full object-cover sm:h-[340px]"
+            />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(6_18_40/.15),transparent_34%,rgb(6_18_40/.85))]" />
             <p className="absolute inset-x-5 bottom-5 flex items-center gap-2.5 font-display text-[0.85rem] font-semibold text-white sm:text-[0.96rem]">
               <span className="size-2.5 shrink-0 rounded-full bg-green shadow-[0_0_12px_var(--color-green)]" />
@@ -208,9 +227,10 @@ export function HowItWorks() {
 
 export function Plans() {
   return (
-    <section id="plans" className="bg-surface-alt py-16 sm:py-28">
+    <section id="plans" aria-labelledby="plans-heading" className="bg-surface-alt py-16 sm:py-28">
       <div className="container-x">
         <SectionHead
+          id="plans-heading"
           eyebrow="Protection Plans"
           title={<>Choose the plan <span className="grad-text">that suits you best.</span></>}
           sub="Premium protection. Smart choice. Pick the cover that fits your device and your life."
@@ -304,7 +324,7 @@ export function Plans() {
           {PLAN_ASSURANCES.map((a: { title: string; body: string }, i: number) => (
             <Reveal key={a.title} delay={i * 0.06}>
               <div className="h-full rounded-2xl border border-line bg-card p-5 text-center shadow-brand-sm">
-                <h4 className="text-[0.92rem] font-bold">{a.title}</h4>
+                <h3 className="text-[0.92rem] font-bold">{a.title}</h3>
                 <p className="mt-1 text-[0.8rem] text-muted">{a.body}</p>
               </div>
             </Reveal>
@@ -334,12 +354,12 @@ const WARRANTY_POINTS = [
 
 export function Warranty() {
   return (
-    <section id="warranty" className="bg-surface py-16 sm:py-28">
+    <section id="warranty" aria-labelledby="warranty-heading" className="bg-surface py-16 sm:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1.2fr_.8fr] lg:gap-14">
         <div>
           <Reveal><Eyebrow>Warranty &amp; Authorised Service</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
+            <h2 id="warranty-heading" className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
               Cracked screen? <span className="grad-text">We've got your back.</span>
             </h2>
           </Reveal>
@@ -356,7 +376,7 @@ export function Warranty() {
                 <div className="flex gap-4">
                   <IconBox><w.icon size={22} strokeWidth={1.6} /></IconBox>
                   <div>
-                    <h4 className="text-[1.02rem] font-bold">{w.title}</h4>
+                    <h3 className="text-[1.02rem] font-bold">{w.title}</h3>
                     <p className="text-[0.9rem] text-muted">{w.body}</p>
                   </div>
                 </div>
@@ -403,9 +423,9 @@ const WHY = [
 
 export function Why() {
   return (
-    <section className="bg-surface-alt py-16 sm:py-28">
+    <section aria-labelledby="why-heading" className="bg-surface-alt py-16 sm:py-28">
       <div className="container-x">
-        <SectionHead eyebrow="Why Trevix365" title="More than a screen protector" />
+        <SectionHead id="why-heading" eyebrow="Why Trevix365" title="More than a screen protector" />
         <div className="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
           {WHY.map((w, i: number) => (
             <Reveal key={w.title} delay={i * 0.06}>
@@ -426,13 +446,13 @@ export function Why() {
 
 export function Stores() {
   return (
-    <section id="stores" className="relative overflow-hidden bg-surface py-16 sm:py-28">
+    <section id="stores" aria-labelledby="stores-heading" className="relative overflow-hidden bg-surface py-16 sm:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(60%_55%_at_92%_12%,rgb(0_184_201/.1),transparent_60%),radial-gradient(55%_60%_at_6%_100%,rgb(122_201_67/.09),transparent_60%)]" />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
         <div>
           <Reveal><Eyebrow>Kiosks Across Kerala</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
+            <h2 id="stores-heading" className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
               Find Trevix365 <span className="grad-text">near you.</span>
             </h2>
           </Reveal>
@@ -460,10 +480,12 @@ export function Stores() {
         </div>
 
         <Reveal delay={0.15} className="relative">
-          <img
+          <Img
             src="/assets/img/kiosk.jpg"
-            alt="A Trevix365 kiosk with the film-cutting machine, lit display cabinet and product shelves"
-            loading="lazy"
+            alt="A Trevix365 kiosk with the film-cutting machine, lit display cabinet and packaged screen protectors"
+            title="Trevix365 kiosk in Kerala"
+            width={1280}
+            height={1143}
             className="aspect-[4/3] w-full rounded-3xl border border-line object-cover shadow-brand"
           />
           <span className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-[0.8rem] font-semibold text-head shadow-brand-sm">
@@ -483,9 +505,9 @@ export function Stores() {
 
 export function Testimonials() {
   return (
-    <section className="bg-surface-alt py-16 sm:py-28">
+    <section aria-labelledby="testimonials-heading" className="bg-surface-alt py-16 sm:py-28">
       <div className="container-x">
-        <SectionHead eyebrow="Loved by device owners" title="Protection people trust" />
+        <SectionHead id="testimonials-heading" eyebrow="Loved by device owners" title="Protection people trust" />
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {TESTIMONIALS.map((t: { quote: string; name: string; city: string }, i: number) => (
             <Reveal key={t.name} delay={i * 0.07}>
@@ -511,9 +533,9 @@ export function Testimonials() {
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
   return (
-    <section className="bg-surface py-16 sm:py-28">
+    <section id="faq" aria-labelledby="faq-heading" className="bg-surface py-16 sm:py-28">
       <div className="container-x max-w-3xl">
-        <SectionHead eyebrow="Questions" title="Frequently asked" />
+        <SectionHead id="faq-heading" eyebrow="Questions" title="Frequently asked" />
         <div className="mt-10 flex flex-col gap-3">
           {FAQS.map((f: { q: string; a: string }, i: number) => {
             const isOpen = open === i
@@ -557,7 +579,7 @@ export function Faq() {
 export function Contact() {
   const [sent, setSent] = useState(false)
   return (
-    <section id="contact" className="bg-surface-alt py-16 sm:py-28">
+    <section id="contact" aria-labelledby="contact-heading" className="bg-surface-alt py-16 sm:py-28">
       <div className="container-x">
         <Reveal>
           <div className="relative mx-auto mb-14 max-w-3xl overflow-hidden rounded-3xl border border-teal/30 p-10 text-center shadow-brand sm:p-14">
@@ -578,8 +600,9 @@ export function Contact() {
         <div className="grid gap-6 lg:grid-cols-[1.3fr_.7fr]">
           <Reveal>
             <Card className="p-7 sm:p-9">
-              <h3 className="text-[1.3rem] font-bold">Get in touch</h3>
+              <h3 id="contact-heading" className="text-[1.3rem] font-bold">Get in touch</h3>
               <form
+                aria-labelledby="contact-heading"
                 className="mt-5"
                 onSubmit={(e) => { e.preventDefault(); setSent(true) }}
               >
@@ -681,7 +704,7 @@ export function Footer() {
     <footer className="border-t-[3px] border-transparent bg-navy pt-16 [border-image:linear-gradient(120deg,var(--color-teal),var(--color-green))_1]">
       <div className="container-x grid gap-10 pb-11 lg:grid-cols-[1.4fr_1.6fr]">
         <div>
-          <img src="/assets/img/logo-light.png" alt="Trevix365" className="h-[42px] w-auto" />
+          <img src="/assets/img/logo-light.png" alt="Trevix365 — Protect. Repair. Replace." width={1072} height={300} loading="lazy" decoding="async" className="h-[42px] w-auto" />
           <p className="mt-4 max-w-xs text-[0.92rem] text-[#9fb0cb]">
             Custom-cut device protection, backed by a real warranty. Protect. Repair. Replace.
           </p>

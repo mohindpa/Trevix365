@@ -61,17 +61,20 @@ export function SectionHead({
   title,
   sub,
   center = true,
+  id,
 }: {
   eyebrow: string
   title: ReactNode
   sub?: string
   center?: boolean
+  /** Set when a parent <section> points at this heading via aria-labelledby. */
+  id?: string
 }) {
   return (
     <div className={cn('max-w-2xl', center && 'mx-auto text-center')}>
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
       <Reveal delay={0.05}>
-        <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
+        <h2 id={id} className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.015em]">
           {title}
         </h2>
       </Reveal>

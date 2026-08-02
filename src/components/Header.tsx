@@ -54,11 +54,13 @@ export function Header() {
         <a href="#home" aria-label="Trevix365 home" className="mr-auto shrink-0">
           <img
             src={scrolled ? '/assets/img/logo.png' : '/assets/img/logo-light.png'}
-            alt="Trevix365"
+            alt="Trevix365 — custom-cut screen protection"
+            width={1072}
+            height={300}
             className={cn('h-[34px] w-auto', scrolled && 'dark:hidden')}
           />
           {scrolled && (
-            <img src="/assets/img/logo-light.png" alt="" aria-hidden="true" className="hidden h-[34px] w-auto dark:block" />
+            <img src="/assets/img/logo-light.png" alt="" aria-hidden="true" width={1072} height={300} className="hidden h-[34px] w-auto dark:block" />
           )}
         </a>
 

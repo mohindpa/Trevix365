@@ -1,0 +1,14 @@
+{
+  "name": "Trevix365 — Protect. Repair. Replace.",
+  "short_name": "Trevix365",
+  "description": "Custom-cut screen protectors with a 12-month display damage warranty.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#060d1d",
+  "theme_color": "#060d1d",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

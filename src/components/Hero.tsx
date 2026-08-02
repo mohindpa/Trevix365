@@ -69,16 +69,21 @@ export function Hero() {
     >
       {/* video / gradient backdrop */}
       <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/assets/img/hero.jpg)' }}
+        <img
+          src="/assets/img/hero.webp"
+          alt=""
           aria-hidden="true"
+          width={1376}
+          height={768}
+          fetchPriority="high"
+          decoding="sync"
+          className="absolute inset-0 size-full object-cover"
         />
         {showVideo && (
           <video
             className="absolute inset-0 size-full object-cover"
             src="/assets/img/hero-video.mp4"
-            poster="/assets/img/hero.jpg"
+            poster="/assets/img/hero.webp"
             autoPlay
             muted
             loop
