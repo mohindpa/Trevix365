@@ -460,7 +460,12 @@ export function Stores() {
         </div>
 
         <Reveal delay={0.15} className="relative">
-          <img src="/assets/img/kiosk.jpg" alt="A Trevix365 kiosk inside a shopping mall" loading="lazy" className="rounded-3xl border border-line shadow-brand" />
+          <img
+            src="/assets/img/kiosk.jpg"
+            alt="A Trevix365 kiosk with the film-cutting machine, lit display cabinet and product shelves"
+            loading="lazy"
+            className="aspect-[4/3] w-full rounded-3xl border border-line object-cover shadow-brand"
+          />
           <span className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-[0.8rem] font-semibold text-head shadow-brand-sm">
             <span className="relative flex size-2.5">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-green opacity-70" />
