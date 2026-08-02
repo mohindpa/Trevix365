@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* ---------- Self-hosted body font (no external CDN) ---------- */
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url('/assets/fonts/poppins-300.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/poppins-500.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/poppins-600.woff2') format('woff2');}
+
+@theme {
+  --font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+
+  --color-navy: #071A3D;
+  --color-teal: #00B8C9;
+  --color-green: #7AC943;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #F3F7FB;
+  --card: #ffffff;
+  --head: #071A3D;
+  --body: #223251;
+  --muted: #5a6b86;
+  --muted-2: #8493ab;
+  --line: #e2e9f2;
+  --input-bg: #fbfcfe;
+  --teal-ink: #0a7f8d;
+  --green-ink: #5a9e2b;
+  --grad-text: linear-gradient(120deg, #0a8c9b, #5aa32f);
+  --shadow: 0 22px 50px -28px rgb(7 26 61 / .28);
+  --shadow-sm: 0 10px 28px -18px rgb(7 26 61 / .20);
+}
+
+.dark {
+  --bg: #060d1d;
+  --bg-alt: #0a1428;
+  --card: #0d1a33;
+  --head: #f4f8ff;
+  --body: #c3d1e8;
+  --muted: #93a3c0;
+  --muted-2: #6f81a1;
+  --line: rgb(255 255 255 / .09);
+  --input-bg: #0a1730;
+  --teal-ink: #33d1e1;
+  --green-ink: #98e15f;
+  --grad-text: linear-gradient(120deg, #2fd0e0, #8fe05a);
+  --shadow: 0 26px 60px -30px rgb(0 0 0 / .75);
+  --shadow-sm: 0 12px 30px -20px rgb(0 0 0 / .6);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--head); text-wrap: balance; }
+  section[id] { scroll-margin-top: 84px; }
+  ::selection { background: rgb(0 184 201 / .25); }
+  :focus-visible { outline: 3px solid rgb(0 184 201 / .5); outline-offset: 2px; border-radius: 6px; }
+}
+
+@layer utilities {
+  .bg-surface { background: var(--bg); }
+  .bg-surface-alt { background: var(--bg-alt); }
+  .bg-card { background: var(--card); }
+  .text-head { color: var(--head); }
+  .text-body { color: var(--body); }
+  .text-muted { color: var(--muted); }
+  .text-muted-2 { color: var(--muted-2); }
+  .text-teal-ink { color: var(--teal-ink); }
+  .text-green-ink { color: var(--green-ink); }
+  .border-line { border-color: var(--line); }
+  .shadow-brand { box-shadow: var(--shadow); }
+  .shadow-brand-sm { box-shadow: var(--shadow-sm); }
+  .bg-input { background: var(--input-bg); }
+  .brand-grad { background-image: linear-gradient(120deg, var(--color-teal), var(--color-green)); }
+  .grad-text {
+    background-image: var(--grad-text);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
