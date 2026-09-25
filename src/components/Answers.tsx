@@ -26,13 +26,13 @@ const ANSWERS = [
   },
   {
     q: 'What does a display damage warranty actually cover?',
-    a: 'On eligible Trevix365 plans, the 12-month display damage warranty covers accidental cracks to the screen — external and internal — with two claims in one year: the first at full coverage and the second at 50%. Liquid damage is excluded.',
-    more: 'Separately, the authorised service option shares the cost of a genuine repair: Trevix365 pays 60% of an eligible display replacement at an authorised Apple or Samsung centre and you pay 40%, subject to model, eligibility and claim limits.',
+    a: 'Display warranty claims cover accidental display damage or breakage for 12 months from installation — provided the protection film was fitted at the time of damage — with up to two claims per plan year. Every claim carries a flat ₹2,500 service fee, charged in addition to any cost-share and non-refundable. The first claim is fully covered on a premium aftermarket display; an authorised original display is split 60% Trevix365 / 40% you on both claims.',
+    more: 'Trevix365 processes the entire claim for you — with 7 authorised OEM service centres in Kochi and a typical repair turnaround of 2–3 working days. Liquid damage, internal components and cosmetic wear are not covered.',
   },
   {
     q: 'What does screen protection cost?',
-    a: 'Price depends on the device and the plan, because the film is cut per model and the plans differ in coverage and warranty. Trevix365 quotes at the kiosk or by enquiry rather than listing a single figure that would not hold across devices.',
-    more: 'The three plans differ in what they cover rather than in film quality — all use the same 450 micron premium TPU.',
+    a: 'Plans are fixed-price rather than quoted: ₹1,999 for Ultra Premium Screen with front and back film, ₹2,999 for Ultra Premium Screen with the display warranty, and ₹3,999 for Ultra Premium 360 — front, back, frame and camera glass with the display warranty. Each plan runs 365 days from installation.',
+    more: 'All three plans use the same premium film and include two free film replacements in the year — they differ in coverage and warranty, not in film quality.',
   },
 ]
 
@@ -82,7 +82,7 @@ export function Answers() {
               <tbody>
                 {[
                   ['Fits curved screens', 'Yes — film flexes to the edge', 'Often lifts at the curve'],
-                  ['Device availability', 'Cut on demand, 1,000+ profiles', 'Limited to stocked models'],
+                  ['Device availability', 'Cut on demand, 25,000+ profiles', 'Limited to stocked models'],
                   ['On impact', 'Absorbs and flexes', 'Can shatter'],
                   ['Display warranty', 'Up to 2 claims in 12 months', 'Rarely included'],
                   ['Fitting', 'Bubble-free by trained staff', 'Usually self-applied'],

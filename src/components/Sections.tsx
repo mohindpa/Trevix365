@@ -27,7 +27,7 @@ const Check = () => (
 )
 import { Button, Card, Eyebrow, IconBox, Reveal, SectionHead } from '@/components/ui/primitives'
 import { Img } from '@/components/ui/Img'
-import { CITIES, CONTACT, FAQS, PLANS, PLAN_ASSURANCES, STEPS, TESTIMONIALS } from '@/lib/content'
+import { CITIES, CLAIM_FEE, CONTACT, FAQS, PLANS, PLAN_ASSURANCES, STEPS, TESTIMONIALS, WARRANTY_CLAIMS } from '@/lib/content'
 import type { Plan } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
@@ -77,8 +77,8 @@ export function Features() {
       <div className="container-x grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         {FEATURES.map((f, i: number) => (
           <Reveal key={f.title} delay={i * 0.06}>
-            <Card className="h-full p-5 hover:-translate-y-1.5 hover:border-teal/45 sm:p-7">
-              <IconBox><f.icon size={22} strokeWidth={1.6} /></IconBox>
+            <Card className="h-full p-5 text-center hover:-translate-y-1.5 hover:border-teal/45 sm:p-7">
+              <div className="flex justify-center"><IconBox><f.icon size={22} strokeWidth={1.6} /></IconBox></div>
               <h3 className="mt-4 text-[1rem] font-bold sm:text-[1.08rem]">{f.title}</h3>
               <p className="mt-2 hidden text-[0.92rem] text-muted sm:block">{f.body}</p>
             </Card>
@@ -118,7 +118,7 @@ export function Technology() {
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute -right-3 top-6 rounded-2xl border border-line bg-card px-4 py-3 shadow-brand sm:-right-5"
           >
-            <strong className="block font-display text-[1.3rem] font-extrabold text-head">1000+</strong>
+            <strong className="block font-display text-[1.3rem] font-extrabold text-head">25,000+</strong>
             <span className="text-[0.74rem] text-muted">Device profiles</span>
           </motion.div>
           <motion.div
@@ -223,7 +223,7 @@ export function HowItWorks() {
   )
 }
 
-/* ================= Plans (no prices) ================= */
+/* ================= Plans ================= */
 
 export function Plans() {
   return (
@@ -238,7 +238,7 @@ export function Plans() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {PLANS.map((p: Plan, i: number) => (
-            <Reveal key={p.name} delay={i * 0.07}>
+            <Reveal key={p.label} delay={i * 0.07}>
               <Card
                 className={cn(
                   'relative flex h-full flex-col hover:-translate-y-2',
@@ -254,71 +254,54 @@ export function Plans() {
                 )}
 
                 <div className="mt-3 text-center">
-                  <h3 className="text-[1.25rem] font-bold">{p.name}</h3>
-                  <p className="mt-1 font-display text-[0.78rem] font-bold uppercase tracking-[0.12em] text-teal-ink">
-                    {p.coverage}
-                  </p>
+                  <p className="font-display text-[0.72rem] font-bold uppercase tracking-[0.16em] text-teal-ink">{p.label}</p>
+                  <h3 className="mt-2 text-[1.25rem] font-bold">{p.name}</h3>
+                  <p className="mt-1 text-[0.82rem] text-muted">{p.tagline}</p>
                 </div>
 
-                {/* price slot replaced by the plan's standout benefit + enquiry cue */}
-                <div className="mt-5 rounded-2xl border border-teal/25 bg-teal/8 px-4 py-3.5 text-center">
-                  <span className="block font-display text-[1.02rem] font-extrabold leading-snug text-head">
-                    {p.highlight}
-                  </span>
-                  <span className="mt-0.5 block text-[0.72rem] uppercase tracking-[0.1em] text-teal-ink">
-                    Enquire for pricing
-                  </span>
+                {/* fixed price from the plan sheet */}
+                <div className="mt-5 rounded-2xl border border-teal/25 bg-teal/8 px-4 py-4 text-center">
+                  <span className="block font-display text-[2rem] font-extrabold leading-none text-head">{p.price}</span>
+                  <span className="mt-2 block text-[0.74rem] text-teal-ink">{p.priceNote}</span>
                 </div>
 
-                <p className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-muted-2">Material</p>
+                <p className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-muted-2">What's Included</p>
                 <ul className="mt-2 flex flex-col gap-2">
-                  {p.material.map((m: string) => (
+                  {p.included.map((m: string) => (
                     <li key={m} className="relative pl-6 text-[0.84rem] leading-snug text-muted">
                       <Check />{m}
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-muted-2">Covers</p>
-                <ul className="mt-2 flex flex-col gap-2">
-                  {p.features.map((f: string) => (
-                    <li key={f} className="relative pl-6 text-[0.84rem] leading-snug text-muted">
-                      <Check />{f}
-                    </li>
-                  ))}
-                </ul>
+                {p.note && <p className="mt-4 text-[0.72rem] leading-relaxed text-muted-2">{p.note}</p>}
 
-                <div className="mt-5 border-t border-line pt-4">
-                  {p.warranty ? (
-                    <>
-                      <p className="font-display text-[0.9rem] font-bold text-head">{p.warranty.label}</p>
-                      <ul className="mt-2 flex flex-col gap-1.5">
-                        {p.warranty.detail?.map((d: string, n: number) => (
-                          <li key={d} className="flex items-center gap-2 text-[0.82rem] text-muted">
-                            <span className="grid size-4.5 shrink-0 place-items-center rounded-full bg-teal/15 text-[0.62rem] font-bold text-teal-ink">
-                              {n + 1}
-                            </span>
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <p className="font-display text-[0.88rem] font-bold uppercase tracking-[0.06em] text-green-ink">
-                      No display damage warranty
-                    </p>
-                  )}
-                </div>
-
-                <div className="mt-auto pt-5">
+                <div className="mt-auto flex flex-col gap-3 pt-5">
+                  <p
+                    className={cn(
+                      'rounded-full border px-4 py-2.5 text-center font-display text-[0.72rem] font-bold',
+                      p.warrantyCovered
+                        ? 'border-green/45 bg-green/12 uppercase tracking-[0.1em] text-green-ink'
+                        : 'border-line bg-input text-muted',
+                    )}
+                  >
+                    {p.warrantyCovered ? `✓ ${p.footer}` : p.footer}
+                  </p>
                   <Button href="#contact" variant={p.featured ? 'primary' : 'ghost'} className="w-full">
-                    Get a quote
+                    Get this plan
                   </Button>
                 </div>
               </Card>
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 rounded-2xl border border-green/40 bg-green/10 px-5 py-4 text-center text-[0.9rem] text-body">
+            <span>Need 360° protection without display warranty? Ultra Premium 360 (No Warranty) is also available at</span>
+            <strong className="font-display font-extrabold text-head">₹2,999</strong>
+          </div>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
           {PLAN_ASSURANCES.map((a: { title: string; body: string }, i: number) => (
@@ -333,10 +316,19 @@ export function Plans() {
 
         <Reveal>
           <p className="mx-auto mt-8 max-w-3xl text-center text-[0.76rem] leading-relaxed text-muted-2">
-            Pricing varies by device and plan — talk to us at a kiosk or send an enquiry for an exact quote. Display
-            damage warranty covers accidental external &amp; internal cracks (liquid damage not covered). The 60/40
-            authorised service option is subject to plan, model, eligibility and maximum claim limit. Terms &amp;
-            conditions apply.
+            Coverage runs for 12 months from installation. Two free front &amp; back film replacements are included —
+            after that, ₹399 flat per replacement. Display claims require the film to have been fitted at the time of
+            damage and carry a flat ₹2,500 service fee on every claim (in addition to any cost-share, non-refundable);
+            up to two claims per plan year. Liquid damage, internal components and cosmetic wear are not covered.{' '}
+            <a
+              href="https://app.trevix365.com/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-ink underline underline-offset-2 hover:text-green-ink"
+            >
+              Full terms &amp; conditions
+            </a>
+            .
           </p>
         </Reveal>
       </div>
@@ -386,24 +378,55 @@ export function Warranty() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="relative overflow-hidden rounded-3xl border border-teal/35 bg-[linear-gradient(160deg,#0a2249,#071A3D)] p-9 text-center shadow-brand">
+          <div className="relative overflow-hidden rounded-3xl border border-teal/35 bg-[linear-gradient(160deg,#0a2249,#071A3D)] p-8 shadow-brand sm:p-9">
             <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_80%_0%,rgb(0_184_201/.3),transparent_55%),radial-gradient(70%_60%_at_10%_100%,rgb(122_201_67/.22),transparent_55%)]" />
             <div className="relative">
-              <div className="brand-grad mx-auto grid size-[70px] place-items-center rounded-3xl text-[#052033]">
-                <ShieldCheck size={38} strokeWidth={1.5} />
-              </div>
-              <h3 className="mt-5 text-[1.35rem] font-bold text-white">1 Year Display Damage Warranty</h3>
-              <p className="mt-2 text-[0.9rem] text-[#c3d2ea]">
-                Available on Ultra Premium Care &amp; Premium Care plans.
+              <p className="font-display text-[0.72rem] font-bold uppercase tracking-[0.18em] text-green">
+                Warranty Claim Terms
               </p>
-              <ul className="mt-5 flex flex-col gap-2.5 text-left">
-                {['Covers accidental external & internal cracks', 'Full display replacement on first damage', 'Liquid damage not covered'].map((t) => (
-                  <li key={t} className="relative pl-6 text-[0.88rem] text-[#d3ddee]">
-                    <span className="absolute left-0 font-bold text-green">✓</span>{t}
-                  </li>
+              <h3 className="mt-2.5 text-[1.5rem] font-bold leading-snug text-white">
+                Only if it breaks <span className="grad-text">with our protection.</span>
+              </h3>
+              <p className="mt-1.5 text-[0.88rem] text-[#c3d2ea]">One flat fee. Real peace of mind.</p>
+
+              <div className="mt-5 rounded-2xl border border-green/40 bg-green/10 px-5 py-4 text-center">
+                <strong className="block font-display text-[2.2rem] font-extrabold leading-none text-white">{CLAIM_FEE.amount}</strong>
+                <div className="mt-1.5 text-[0.8rem] leading-snug text-[#d3ddee]">
+                  {CLAIM_FEE.lines.map((l: string) => <p key={l}>{l}</p>)}
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-col gap-3 text-left">
+                {WARRANTY_CLAIMS.map((row: { display: string; claims: string[] }) => (
+                  <div key={row.display} className="rounded-2xl border border-white/12 bg-white/6 px-5 py-4">
+                    <p className="flex items-center gap-2 font-display text-[0.9rem] font-bold text-white">
+                      <ShieldCheck size={15} className="text-green" strokeWidth={2} />
+                      {row.display}
+                    </p>
+                    <ul className="mt-2 flex flex-col gap-1.5">
+                      {row.claims.map((c: string) => (
+                        <li key={c} className="text-[0.84rem] text-[#d3ddee]">{c}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-              <div className="mt-7"><Button href="#contact" className="w-full">Register your plan</Button></div>
+              </div>
+
+              <p className="mt-4 text-[0.78rem] leading-relaxed text-[#9fb0cb]">
+                Available on the Ultra Premium 360 and Ultra Premium Screen (with warranty) plans. Up to two claims per
+                plan year, and the protection film must have been fitted at the time of damage. Liquid damage, internal
+                components and cosmetic wear are not covered.{' '}
+                <a
+                  href="https://app.trevix365.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#c3d2ea] underline underline-offset-2 hover:text-green"
+                >
+                  Full terms
+                </a>
+                .
+              </p>
+              <div className="mt-6"><Button href="#contact" className="w-full">Register your plan</Button></div>
             </div>
           </div>
         </Reveal>
@@ -430,7 +453,7 @@ export function Why() {
           {WHY.map((w, i: number) => (
             <Reveal key={w.title} delay={i * 0.06}>
               <Card className="h-full p-5 text-center hover:-translate-y-1.5 hover:border-teal/45 sm:p-7">
-                <div className="mx-auto"><IconBox tone={i % 2 ? 'green' : 'teal'}><w.icon size={22} strokeWidth={1.6} /></IconBox></div>
+                <div className="flex justify-center"><IconBox tone={i % 2 ? 'green' : 'teal'}><w.icon size={22} strokeWidth={1.6} /></IconBox></div>
                 <h3 className="mt-3.5 text-[1rem] font-bold">{w.title}</h3>
                 <p className="mt-1.5 text-[0.85rem] text-muted">{w.body}</p>
               </Card>
@@ -618,7 +641,7 @@ export function Contact() {
                 <label className="mt-4 block text-[0.82rem] font-medium text-muted">
                   Interested in
                   <select name="interest" className="mt-1.5 w-full rounded-xl border border-line bg-input px-4 py-3 text-[0.92rem] text-head outline-none focus:border-teal">
-                    {PLANS.map((p: Plan) => <option key={p.name}>{p.name}</option>)}
+                    {PLANS.map((p: Plan) => <option key={p.label}>{p.name} — {p.label}</option>)}
                     <option>Franchise / Partnership</option>
                   </select>
                 </label>
@@ -695,7 +718,7 @@ function InfoRow({ icon: Icon, label, children }: { icon: typeof Mail; label: st
 
 const FOOTER_LINKS = [
   { title: 'Explore', links: [['Technology', '#technology'], ['How it works', '#how'], ['Plans', '#plans']] },
-  { title: 'Support', links: [['Warranty', '#warranty'], ['Find a kiosk', '#stores'], ['Contact', '#contact']] },
+  { title: 'Support', links: [['Warranty', '#warranty'], ['Find a kiosk', '#stores'], ['Contact', '#contact'], ['Terms & conditions', 'https://app.trevix365.com/terms']] },
   { title: 'Company', links: [['Partnerships', '#stores'], ['Careers', '#contact'], ['Enquiries', '#contact']] },
 ]
 
@@ -704,7 +727,7 @@ export function Footer() {
     <footer className="border-t-[3px] border-transparent bg-navy pt-16 [border-image:linear-gradient(120deg,var(--color-teal),var(--color-green))_1]">
       <div className="container-x grid gap-10 pb-11 lg:grid-cols-[1.4fr_1.6fr]">
         <div>
-          <img src="/assets/img/logo-light.png" alt="Trevix365 — Protect. Repair. Replace." width={1072} height={300} loading="lazy" decoding="async" className="h-[42px] w-auto" />
+          <img src="/assets/img/logo-light.png" alt="Trevix365 — Protect. Repair. Replace." width={1142} height={308} loading="lazy" decoding="async" className="h-[42px] w-auto" />
           <p className="mt-4 max-w-xs text-[0.92rem] text-[#9fb0cb]">
             Custom-cut device protection, backed by a real warranty. Protect. Repair. Replace.
           </p>
@@ -722,9 +745,18 @@ export function Footer() {
           ))}
         </nav>
       </div>
-      <div className="container-x flex flex-col gap-1.5 border-t border-white/10 py-6 text-[0.8rem] text-[#8494b0] sm:flex-row sm:items-center sm:justify-between">
-        <span>© {new Date().getFullYear()} Trevix365. All rights reserved.</span>
-        <span className="text-[#9fb0cb]">Stronger protection · Trusted warranty · Total peace of mind</span>
+      <div className="container-x flex flex-col gap-5 border-t border-white/10 py-6 text-[0.8rem] text-[#8494b0] sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-1">
+          <span className="font-display text-[0.82rem] font-bold uppercase tracking-[0.1em] text-[#c3d2ea]">
+            TREVIX365 GLOBAL PRIVATE LIMITED
+          </span>
+          <span>Maradu, Ernakulam, PIN- 682304, Kerala, India</span>
+          <span>GST No: 32AANCT6421C1ZM</span>
+        </div>
+        <div className="flex flex-col gap-1 sm:text-right">
+          <span>© {new Date().getFullYear()} Trevix365. All rights reserved.</span>
+          <span className="text-[#9fb0cb]">Stronger protection · Trusted warranty · Total peace of mind</span>
+        </div>
       </div>
     </footer>
   )
